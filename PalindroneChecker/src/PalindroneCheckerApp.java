@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindroneCheckerApp {
 
@@ -12,19 +14,19 @@ public class PalindroneCheckerApp {
         System.out.print("Input text: ");
         String text = sc.nextLine();
 
-        char[] arr = text.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        int left = 0;
-        int right = arr.length - 1;
+        for (char c : text.toCharArray()) {
+            stack.push(c);
+        }
+
         boolean isPalindrome = true;
 
-        while (left < right) {
-            if (arr[left] != arr[right]) {
+        for (char c : text.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            left++;
-            right--;
         }
 
         System.out.println("Is it a Palindrome? : " + isPalindrome);
