@@ -12,19 +12,21 @@ public class PalindroneCheckerApp {
         System.out.print("Input text: ");
         String text = sc.nextLine();
 
-        String reversed = "";
+        char[] arr = text.toCharArray();
 
-        // reverse using loop
-        for (int i = text.length() - 1; i >= 0; i--) {
-            reversed += text.charAt(i);
+        int left = 0;
+        int right = arr.length - 1;
+        boolean isPalindrome = true;
+
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
         }
 
-        System.out.println("Reversed text: " + reversed);
-
-        if (text.equals(reversed)) {
-            System.out.println("Is it a Palindrome? : true");
-        } else {
-            System.out.println("Is it a Palindrome? : false");
-        }
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
     }
 }
